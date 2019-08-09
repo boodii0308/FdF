@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 19:12:45 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 01:19:28 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/09 01:51:39 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ t_tow			*getprop(t_map *all, int x, int y, char **s)
 	get->cor[Y] = y;
 	get->cor[Z] = heightconvert(s);
 	get->color = ((**s == ',') ? define_color(s) : 0);
-	all->trigger = (get->color ? 1 : 0);
+	if(get->color)
+		all->trigger = 1;
 	all->map_height = (get->cor[Z] >= all->map_height)\
 	? get->cor[Z] : all->map_height;
 	get->main[X] = 0;

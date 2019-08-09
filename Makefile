@@ -6,7 +6,7 @@
 #    By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/29 15:53:53 by tebatsai          #+#    #+#              #
-#    Updated: 2019/08/08 23:23:02 by tebatsai         ###   ########.fr        #
+#    Updated: 2019/08/09 01:35:39 by tebatsai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ $(OBJECTS_DIRECTORY):
 	mkdir -p $(OBJECTS_DIRECTORY)
 
 $(OBJECTS_DIRECTORY)%.o : $(SRCS_DIRECTORY)%.c $(HEADER)
-	$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	$(CC) $(FLAGS) -g -c $(INCLUDES) $< -o $@
 
 $(MINILIBX):
 	make -sC $(MINILIBX_DIRECTORY)

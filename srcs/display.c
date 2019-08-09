@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 00:00:37 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 00:18:22 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/09 13:16:46 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ unsigned int	make_color(t_map *all, t_tow *map)
 		gap = (float)map->cor[Z] * -1 / (all->map_height + (map->cor[Z] * -1));
 	else
 		gap = (float)map->cor[Z] / all->map_height;
-	if (gap == 0)
+	if (gap == 0 || all->map_height == 0)
 		return (all->color_set[X]);
 	else
 		return (mix(all->color_set[X], all->color_set[Y], gap));

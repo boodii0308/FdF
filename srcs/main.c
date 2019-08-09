@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 16:35:37 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 01:17:19 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/09 01:47:35 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void		set_default(t_map *all, int i)
 	all->angle[Y] = g_base[i][Y] * (PI / 180);
 	all->angle[Z] = g_base[i][Z] * (PI / 180);
 	all->wd_scale = (WIDTH * 0.5) / all->map_length;
+	if (all->wd_scale > 80)
+		all->wd_scale = 80;
 	all->tp_scale = all->wd_scale * 0.25;
 	all->center_map[X] = (LENGTH + MENU_WIDTH) * 0.5;
 	all->center_map[Y] = (WIDTH * 0.5);
