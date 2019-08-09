@@ -6,11 +6,11 @@
 /*   By: tebatsai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 19:38:57 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/07/08 22:12:41 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/07/23 23:19:11 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static int		check_newline(char **s)
 {

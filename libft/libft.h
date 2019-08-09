@@ -6,7 +6,7 @@
 /*   By: tebatsai <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 12:34:08 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/07/08 22:13:04 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/07/29 14:18:49 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ char				**ft_create_arr(int x, int y);
 char				*ft_strndup(const char *s1, size_t n);
 size_t				ft_strclen(const char *s, int c);
 int					get_next_line(int fd, char **line);
+char				*ft_itoa_base(int n, int base);
 #endif

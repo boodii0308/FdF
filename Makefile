@@ -3,38 +3,82 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tebatsai <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/29 15:53:53 by tebatsai          #+#    #+#              #
-#    Updated: 2019/07/08 16:52:29 by tebatsai         ###   ########.fr        #
+#    Updated: 2019/08/08 23:23:02 by tebatsai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = *.c
 
-OBJECTS = *.o
+INCLUDES = -I$(HEADER_DIRECTORY) -I$(LIBFT_DIRECTORY) -I$(MINILIBX_DIRECTORY)
 
+LIBFT_DIRECTORY = ./libft/
+LIBFT = $(LIBFT_DIRECTORY)libft.a
+
+MINILIBX_DIRECTORY = ./miniLibX/
+MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
+
+HEADER_DIRECTORY = ./includes/
+HEADER_LIST = fdf.h\
+			key.h
+HEADER = $(addprefix $(HEADER_DIRECTORY), $(HEADER_LIST))
+
+SRCS_DIRECTORY = ./srcs/
+SRCS_LIST = main.c\
+			read.c\
+			display.c\
+			set_each.c\
+			rotate.c\
+			control.c\
+			changes.c\
+			color.c\
+			builder.c\
+			press.c
+SRCS = $(addprefix $(SRCS_DIRECTORY), $(SRCS_LIST))
+
+OBJECTS_DIRECTORY = build/
+OBJECT_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
+OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECT_LIST))
+
+
+
+CC = gcc
 FLAGS = -Wall -Werror -Wextra
+MLX =  -lmlx -lm -lft -framework OpenGL -framework AppKit -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY)
 
-MLX = -L ft_libgfx/minilibx_macos_sierra -lmlx -framework OpenGL -framework AppKit
 
-LIBFT = libft/libft.a
 
 all:$(NAME)
 
-$(NAME):$(LIBFT) $(OBJECTS) 
-	gcc $(FLAGS) $(MLX) *.c -o $(NAME) $(LIBFT) -g
-$(OBJECTS):
-	gcc $(FLAGS) -c *.c
+$(NAME):$(LIBFT) $(MINILIBX) $(OBJECTS_DIRECTORY) $(OBJECTS)
+	$(CC) $(FLAGS) $(MLX) $(INCLUDES) $(OBJECTS) -o $(NAME)
+
+$(OBJECTS_DIRECTORY):
+	mkdir -p $(OBJECTS_DIRECTORY)
+
+$(OBJECTS_DIRECTORY)%.o : $(SRCS_DIRECTORY)%.c $(HEADER)
+	$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+
+$(MINILIBX):
+	make -sC $(MINILIBX_DIRECTORY)
+
+$(LIBFT):
+	make -sC $(LIBFT_DIRECTORY)
+
 norm:
-	norminette *c *h
+	norminette $(SRCS) $(HEADER)
+
 clean:
-	make -C ./libft clean
-	/bin/rm -f $(OBJECTS)
+	make -C $(LIBFT_DIRECTORY) clean
+	make -C $(MINILIBX_DIRECTORY) clean
+	/bin/rm -rf $(OBJECTS_DIRECTORY)
 
 fclean: clean
-	make -C ./libft fclean
+	/bin/rm -rf $(LIBFT)
+	/bin/rm -rf $(MINILIBX)
 	/bin/rm -rf $(NAME)
-re: clean all
+
+re: fclean all
