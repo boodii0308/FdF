@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 13:51:50 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 01:15:13 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/10 16:37:03 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				keypress(int key, t_map *all)
 
 int				keyrelease(int key, t_map *all)
 {
+	all->trigger = 0;
 	check_press(key, all, 0);
 	return (0);
 }

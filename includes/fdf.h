@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 16:38:12 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 01:12:39 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/10 16:37:00 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ struct					s_tow
 	int					cor[3];
 	int					main[2];
 	unsigned int		color;
+	unsigned int		bas_color;
 };
 
 struct					s_map

@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 23:49:56 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 00:05:49 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/10 16:37:01 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void		set_everything(t_map *all, t_tow *map)
 	rotate_yaw(&pre[X], &pre[Y], all->angle[0]);
 	map->main[X] = (int)pre[0] + all->center_map[0];
 	map->main[Y] = (int)pre[1] + all->center_map[1];
-	if (!map->color || !all->trigger)
+	if ((!map->color && all->trigger == 1) || (map->color && all->trigger == 1))
 		map->color = make_color(all, map);
+	if (all->trigger == 5)
+		map->color = map->bas_color;
 }
 
 void		up(t_map *all, t_tow *map, void (*f)(t_map*, t_tow*))

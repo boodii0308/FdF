@@ -6,7 +6,7 @@
 #    By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/29 15:53:53 by tebatsai          #+#    #+#              #
-#    Updated: 2019/08/09 01:35:39 by tebatsai         ###   ########.fr        #
+#    Updated: 2019/08/10 13:47:59 by tebatsai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,18 +49,29 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 MLX =  -lmlx -lm -lft -framework OpenGL -framework AppKit -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY)
 
-
+BIBlack=\033[1;90m   								 # Black
+BIRed=\033[1;91m  # Red
+BIGreen=\033[1;92m  # Green
+BIYellow=\033[1;93m  # Yellow
+BIBlue=\033[1;94m      # Blue
+BIPurple=\033[1;95m  # Purple
+BICyan=\[\033[1;96m\]       # Cyan
+BIWhite=\033[1;97m  # White
+BYellow= \033[1;33m  # Yellow
+RESET = \033[0m
 
 all:$(NAME)
 
 $(NAME):$(LIBFT) $(MINILIBX) $(OBJECTS_DIRECTORY) $(OBJECTS)
-	$(CC) $(FLAGS) $(MLX) $(INCLUDES) $(OBJECTS) -o $(NAME)
-
+	@$(CC) $(FLAGS) $(MLX) $(INCLUDES) $(OBJECTS) -o $(NAME)
+	@echo "$(BIBlue)\t\t\t K å °ı° ™ $(RESET)\n"
 $(OBJECTS_DIRECTORY):
 	mkdir -p $(OBJECTS_DIRECTORY)
 
 $(OBJECTS_DIRECTORY)%.o : $(SRCS_DIRECTORY)%.c $(HEADER)
-	$(CC) $(FLAGS) -g -c $(INCLUDES) $< -o $@
+	@$(CC) $(FLAGS) -g -c $(INCLUDES) $< -o $@
+	@echo "$(BIGreen) $(RESET)$(BIYellow)† $(RESET)\c"
+	@echo "$(BIWhite)• $(RESET)$(BIPurple)◊ $(RESET)$(BIRed)∆ $(RESET)\c"
 
 $(MINILIBX):
 	make -sC $(MINILIBX_DIRECTORY)

@@ -6,7 +6,7 @@
 /*   By: tebatsai <tebatsai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 16:35:37 by tebatsai          #+#    #+#             */
-/*   Updated: 2019/08/09 01:47:35 by tebatsai         ###   ########.fr       */
+/*   Updated: 2019/08/10 16:36:56 by tebatsai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_map		*newin(void)
 	all->center_map[Y] = 0;
 	all->mouse[X] = 0;
 	all->mouse[Y] = 0;
-	all->trigger = 0;
+	all->trigger = 1;
 	all->press = (t_keys *)malloc(sizeof(t_keys));
 	return (all);
 }
